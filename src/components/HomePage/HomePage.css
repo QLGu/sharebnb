@@ -1,0 +1,31 @@
+/* React Starter Kit | MIT License | http://www.reactstarterkit.com/ */
+
+@import '../variables.css';
+
+.HomePage-container {
+  margin: 0 auto;
+  height: 100vh;
+  background: url('http://www.trendir.com/interiors/assets_c/2013/09/Industrial-Urban-Masculine-Apartment-Nordes-Living-Area-thumb-970xauto-14654.jpg');
+  background-size: cover;
+  line-height: .5;
+}
+
+.HomePage--slogan{
+  position: absolute;
+  width: 100%;
+  color: white;
+  text-align: center;
+  margin-top: 30vh;
+}
+
+.HomePage--slogan h1{
+  font-size: -webkit-xxx-large;
+}
+
+button{
+  margin-top: 5vh;
+  background: rgba(0,0,0,.5);
+  padding: 15px;
+  border: none;
+}
+
