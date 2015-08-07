@@ -21,7 +21,6 @@ class App {
       <div>
         <Header />
           {this.props.children}
-        <Footer />
       </div>
     ) : this.props.children;
   }

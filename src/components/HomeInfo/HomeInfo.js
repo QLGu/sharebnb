@@ -8,6 +8,16 @@ import withStyles from '../../decorators/withStyles';
 @withStyles(styles)
 class HomeInfo extends React.Component{
 
+  constructor() {
+    super();
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(e) {
+    e.preventDefault();
+    alert("coming soon!")
+  }
+
   render() {
     let locations = ["Manarola", "Bangkok", "Tokyo"]
     let renderedLocations = locations.map(function(location){
@@ -23,6 +33,7 @@ class HomeInfo extends React.Component{
         </div>
         <div className="Locations">
           { renderedLocations }
+          <button onClick={this.handleClick} className="destinations-button">See All Destinations</button>
         </div>
         <hr />
       </div>

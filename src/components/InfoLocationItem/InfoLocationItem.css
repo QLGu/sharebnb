@@ -4,8 +4,9 @@
 
 .Locations {
   width: 90%;
-  margin: 5vh auto;
-  height: 100vh;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .InfoLocationItem-container {
@@ -20,7 +21,7 @@
 
 .Location--picture {
   cursor: pointer;
-  max-height: 400px;
+  max-height: 350px;
 }
 
 .Location--title{

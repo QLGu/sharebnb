@@ -4,7 +4,6 @@ import invariant from 'fbjs/lib/invariant';
 import Location from '../core/Location';
 
 function handleClick(event) {
-
   // If not left mouse click
   if (event.button !== 0) {
     return;

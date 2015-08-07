@@ -9,6 +9,7 @@ import ContactPage from './components/ContactPage';
 import HomePage from './components/HomePage';
 import LoginPage from './components/LoginPage';
 import RegisterPage from './components/RegisterPage';
+import ResultPage from './components/ResultPage';
 import NotFoundPage from './components/NotFoundPage';
 import ErrorPage from './components/ErrorPage';
 
@@ -24,6 +25,11 @@ const router = new Router(on => {
   on('/login', async () => <LoginPage />);
 
   on('/register', async () => <RegisterPage />);
+
+  on('/search/:location', async (q) => {
+    const terms = q.params.location;
+    return <ResultPage query={terms}/>;
+  });
 
   on('/', async (query) => {
     const content = query.params.query;

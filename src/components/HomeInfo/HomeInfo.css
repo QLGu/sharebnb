@@ -5,9 +5,11 @@
 .HomeInfo-container {
   margin: 50 auto;
   line-height: 1;
-  background-color: white;
+  background-color: whitesmoke;
   transition: top .5s ease;
   z-index: 2;
+  padding-bottom: 60px;
+  padding-top: 60px;
 }
 
 .HomeInfo--section{
@@ -23,4 +25,13 @@
 .HomeInfo--section-container{
   width: 80%;
   margin: 0 auto;
+}
+
+.destinations-button{
+  background: white;
+  border: 1px solid lightgrey;
+  color: #5D5D5D;
+  padding-left:7%;
+  padding-right:7%;
+  font-weight: bold;
 }
