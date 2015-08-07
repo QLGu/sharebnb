@@ -38,17 +38,15 @@ class SearchForm extends React.Component {
   submitSearch(e) {
     e.preventDefault();
     if(this.validate()){
-      console.dir(this.state);
+      let query = "";
+      query += this.state.location;
+      query += "?occupancy=" + this.state.occupancy;
+      query += "&checkIn=" + this.state.checkIn;
+      query += "&checkOut=" + this.state.checkOut;
+      Location.navigateTo('/search/' + query);
     } else {
       console.dir("INVALID INPUT");
     }
-    let query = "";
-    query += this.state.location;
-    query += "?occupancy=" + this.state.occupancy;
-    query += "&checkIn=" + this.state.checkIn;
-    query += "&checkOut=" + this.state.checkOut;
-      Location.navigateTo('/search/' + query);
-
   }
 
   validate(){

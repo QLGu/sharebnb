@@ -12,6 +12,7 @@
     "fastclick": "1.0.6",
     "flux": "2.0.3",
     "front-matter": "1.0.0",
+    "geocoder": "^0.2.2",
     "jade": "1.11.0",
     "lodash": "3.10.0",
     "normalize.css": "3.0.3",
