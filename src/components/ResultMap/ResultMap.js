@@ -11,12 +11,11 @@ class ResultMap extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {coded: [35.6894875,139.6917064]}
+    this.state = {coded: null}
   }
 
   componentDidMount() {
     let coords = null;
-    debugger;
     request
       .get('https://maps.googleapis.com/maps/api/geocode/json?address=' + this.props.location + '&key=AIzaSyBw4dvodHmXRVuKHZsM3lknJV_V-DDa6jo')
       .end(function(err, res){
@@ -27,10 +26,11 @@ class ResultMap extends React.Component {
   }
 
   render() {
+    let gmaps = this.state.coded && <GoogleMap center={this.state.coded} zoom={11} />
+
     return (
       <div className="ResultMap">
-        {this.props.location}
-        <GoogleMap center={this.state.coded} zoom={9} />
+        {gmaps}
       </div>
     );
   }

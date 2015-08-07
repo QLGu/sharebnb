@@ -35,10 +35,9 @@ class ResultPage extends React.Component {
   render() {
     let title = 'Results';
     this.context.onSetTitle(title);
+    console.log(this.props.query);
     return (
       <div className="ResultPage">
-        THIS IS THE RESULT PAGE
-        {this.props.query}
         <ResultMap location={ this.state.location }/>
       </div>
     );
