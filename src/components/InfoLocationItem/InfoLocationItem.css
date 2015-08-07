@@ -1,0 +1,35 @@
+/* React Starter Kit | MIT License | http://www.reactstarterkit.com/ */
+
+@import '../variables.css';
+
+.Locations {
+  width: 90%;
+  margin: 5vh auto;
+  height: 100vh;
+}
+
+.InfoLocationItem-container {
+  width: 33%;
+  float: left;
+  box-sizing: border-box;
+  padding: 2%;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+}
+
+.Location--picture {
+  cursor: pointer;
+  max-height: 400px;
+}
+
+.Location--title{
+  position: absolute;
+  z-index: 100;
+  bottom: 50%;
+  margin: 0 auto;
+  width: 100%;
+  color: white;
+  font-size: xx-large;
+  font-weight: bold;
+}

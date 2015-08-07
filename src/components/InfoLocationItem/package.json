@@ -1,0 +1,6 @@
+{
+  "name": "InfoLocationItem",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./InfoLocationItem.js"
+}

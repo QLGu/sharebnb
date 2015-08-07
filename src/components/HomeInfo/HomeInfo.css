@@ -12,9 +12,9 @@
 
 .HomeInfo--section{
   box-sizing: border-box;
-  width: 33%;
+  width: 100%;
   float: left;
-  color: white;
+  color: #5D5D5D;
   line-height: 1;
   padding: 40px;
   text-align: center;
@@ -23,16 +23,4 @@
 .HomeInfo--section-container{
   width: 80%;
   margin: 0 auto;
-}
-
-.showHomeInfo {
-  top: 0;
-}
-
-.closeHomeInfoButton {
-  float: right;
-  color: #32AAAD;
-  background: none;
-  margin-right: 10px;
-  font-size: xx-large;
 }

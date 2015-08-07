@@ -1,6 +1,7 @@
 /*! React Starter Kit | MIT License | http://www.reactstarterkit.com/ */
 
 import React, { Component } from 'react';
+import InfoLocationItem from '../InfoLocationItem';
 import styles from './HomeInfo.css';
 import withStyles from '../../decorators/withStyles';
 
@@ -8,9 +9,22 @@ import withStyles from '../../decorators/withStyles';
 class HomeInfo extends React.Component{
 
   render() {
+    let locations = ["Manarola", "Bangkok", "Tokyo"]
+    let renderedLocations = locations.map(function(location){
+      return (
+        <InfoLocationItem key={location} location={location}/>
+      )
+    })
     return (
       <div className="HomeInfo-container">
-        Stuff goes here
+        <div className="HomeInfo--section">
+          <h1>Just for the weekend</h1>
+          <h5>Discover new, inspiring places close to home.</h5>
+        </div>
+        <div className="Locations">
+          { renderedLocations }
+        </div>
+        <hr />
       </div>
     );
   }
