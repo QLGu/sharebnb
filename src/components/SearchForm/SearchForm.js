@@ -47,9 +47,8 @@ class SearchForm extends React.Component {
     query += "?occupancy=" + this.state.occupancy;
     query += "&checkIn=" + this.state.checkIn;
     query += "&checkOut=" + this.state.checkOut;
-    http.get(query).then(function(){
       Location.navigateTo('/search/' + query);
-    });
+
   }
 
   validate(){

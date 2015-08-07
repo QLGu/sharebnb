@@ -3,6 +3,7 @@
 import React, { PropTypes } from 'react';
 import withStyles from '../../decorators/withStyles';
 import styles from './ResultPage.css';
+import ResultMap from '../ResultMap';
 
 @withStyles(styles)
 class ResultPage extends React.Component {
@@ -23,6 +24,7 @@ class ResultPage extends React.Component {
       <div className="ResultPage">
         THIS IS THE RESULT PAGE
         {this.props.query}
+        <ResultMap />
       </div>
     );
   }
