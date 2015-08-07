@@ -3,6 +3,7 @@
 @import '../variables.css';
 
 .ResultMap {
+  border-top: 1px solid #DEDEDE;
   line-height: 1;
   width: 40%;
   height: 100%;

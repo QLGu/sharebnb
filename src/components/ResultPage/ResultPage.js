@@ -4,6 +4,7 @@ import React, { PropTypes } from 'react';
 import withStyles from '../../decorators/withStyles';
 import styles from './ResultPage.css';
 import ResultMap from '../ResultMap';
+import ResultListing from '../ResultListing';
 
 @withStyles(styles)
 class ResultPage extends React.Component {
@@ -35,9 +36,9 @@ class ResultPage extends React.Component {
   render() {
     let title = 'Results';
     this.context.onSetTitle(title);
-    console.log(this.props.query);
     return (
       <div className="ResultPage">
+        <ResultListing />
         <ResultMap location={ this.state.location }/>
       </div>
     );

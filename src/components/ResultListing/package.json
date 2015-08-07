@@ -1,0 +1,6 @@
+{
+  "name": "ResultListing",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./ResultListing.js"
+}
