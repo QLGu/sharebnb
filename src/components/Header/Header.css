@@ -11,12 +11,13 @@
   position: fixed;
   background: rgba(0,0,0,0);
   color: #fff;
+  z-index: 1;
 }
 
 .Header-container {
   margin: 0 auto;
   padding: 10px 0;
-  max-width: var(--max-content-width);
+  max-width: 95%;
 }
 
 .Header-brand {

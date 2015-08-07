@@ -1,32 +1,41 @@
 /*! React Starter Kit | MIT License | http://www.reactstarterkit.com/ */
 
-import React, { PropTypes } from 'react';
+import React, { Component } from 'react';
+import About from '../About';
+import HomeInfo from '../HomeInfo';
+import Search from '../Search';
 import styles from './HomePage.css';
 import withStyles from '../../decorators/withStyles';
 
 @withStyles(styles)
-class HomePage {
+class HomePage extends React.Component{
 
-  static contextTypes = {
-    onSetTitle: PropTypes.func.isRequired
-  };
+  constructor(){
+    super();
+    this.state = { showAbout: false }
+    this.handleClick = this.handleClick.bind(this)
+  }
 
   handleClick() {
-    alert("clicked");
+    let showAbout = this.state.showAbout
+    this.setState({ showAbout: !showAbout })
   }
 
   render() {
-    let title = 'Home';
-    this.context.onSetTitle(title);
+    let showAboutState = this.state.showAbout ? " showAboutContainer" : "";
+
     return (
       <div className="HomePage">
-        <div className="HomePage-container">
+        <About showAboutState={showAboutState} _closeAbout={this.handleClick.bind(this)}/>
+        <div className={"HomePage-container" + showAboutState}>
           <div className="HomePage--slogan">
             <h1>BELONG ANYWHERE</h1>
             <h3>Rent unique places to stay from local hosts in 190+ countries.</h3>
             <button onClick={this.handleClick}>How it works</button>
           </div>
+          <Search />
         </div>
+        <HomeInfo/>
       </div>
     );
   }

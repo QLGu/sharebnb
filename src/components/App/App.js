@@ -20,7 +20,7 @@ class App {
     return !this.props.error ? (
       <div>
         <Header />
-        {this.props.children}
+          {this.props.children}
         <Footer />
       </div>
     ) : this.props.children;

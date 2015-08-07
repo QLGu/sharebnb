@@ -26,9 +26,8 @@ const router = new Router(on => {
   on('/register', async () => <RegisterPage />);
 
   on('/', async (query) => {
-    console.log(query.params.query);
     const content = query.params.query;
-    return <HomePage content={content}></HomePage>;
+    return <HomePage />;
   });
 
 

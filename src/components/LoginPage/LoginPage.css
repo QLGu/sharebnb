@@ -2,6 +2,10 @@
 
 @import '../variables.css';
 
+.LoginPage {
+  padding-top: 50px;
+}
+
 .LoginPage-container {
   margin: 0 auto;
   padding: 0 0 40px;

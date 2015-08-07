@@ -1,0 +1,47 @@
+/* React Starter Kit | MIT License | http://www.reactstarterkit.com/ */
+
+@import '../variables.css';
+
+.SearchForm {
+  margin: 0 auto;
+  bottom: 0;
+  color: black;
+  height: 15vh;
+  box-sizing: border-box;
+}
+
+.SearchForm-container {
+  margin: 0 auto;
+  padding: 20px 15px;
+  width: 100%;
+  text-align: center;
+}
+
+.SearchForm-input{
+  line-height: 2;
+}
+
+.submitSearchButton{
+  margin-right: 8px;
+  border-radius: 1px;
+  color: #fff;
+  background: #1396A0;
+  position: relative;
+  top: -1px;
+}
+
+.submitSearchButton:hover{
+  background: #10666D;
+}
+
+.input--location {
+  width: 35%;
+}
+
+.input--date{
+  width: 15%;
+}
+
+.input--occupancy{
+  width: 10%;
+}
