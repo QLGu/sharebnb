@@ -30,7 +30,7 @@
 }
 
 .title {
-  padding-top: 30px;
+  padding-top: 3vh;
   width: 20%;
   float: left;
   box-sizing: border-box;
@@ -39,7 +39,7 @@
 }
 
 .filters {
-  padding-top: 30px;
+  padding-top: 3vh;
 }
 
 .filters--label{
