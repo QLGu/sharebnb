@@ -26,9 +26,9 @@ class ResultFilterBox extends React.Component {
         <div className="RoomTypes">
          <span className="title">Room Type</span>
           <div className="filters">
-            <div className="normalizedInput grey"><label><input type="checkbox"/>Entire Place</label></div>
-            <div className="normalizedInput grey"><label><input type="checkbox"/>Private Room</label></div>
-            <div className="normalizedInput grey"><label><input type="checkbox"/>Shared Room</label></div>
+            <div className="normalizedInput grey"><label><input type="checkbox"/><span className="filters--label">Entire Place</span></label></div>
+            <div className="normalizedInput grey"><label><input type="checkbox"/><span className="filters--label">Private Room</span></label></div>
+            <div className="normalizedInput grey"><label><input type="checkbox"/><span className="filters--label">Shared Room</span></label></div>
           </div>
         </div>
 

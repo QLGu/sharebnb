@@ -1,0 +1,24 @@
+/* React Starter Kit | MIT License | http://www.reactstarterkit.com/ */
+
+@import '../variables.css';
+
+.ResultListingItem {
+  background: white;
+  line-height: 1;
+  width: 50%;
+  padding: 10px;
+  height: 300px;
+  float: left;
+  box-sizing: border-box;
+}
+
+.ListItem--Picture {
+  height: auto;
+  width: 100%;
+}
+
+.ListItem--Title {
+  position: relative;
+  left: 15px;
+  top: 10px;  
+}

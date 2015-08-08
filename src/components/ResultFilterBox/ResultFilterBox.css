@@ -13,7 +13,11 @@
   font-size: small;
 }
 
-.Dates, .RoomTypes, .Price {
+.Dates, .Price, .RoomTypes{
+  border-bottom: 1px solid #DEDEDE;
+}
+
+.Dates, .Price {
   text-align: center;
 }
 
@@ -38,6 +42,10 @@
   padding-top: 30px;
 }
 
+.filters--label{
+  margin-left: 10%;
+}
+
 .grey {
   background: whitesmoke;
 }
@@ -54,5 +62,7 @@
 }
 
 .filters input.priceRange {
-  width: 70%
+  width: 70%;
+  margin: 0 auto;
+  float: left;
 }
