@@ -22,7 +22,6 @@ class ResultMap extends React.Component {
       .end(function(err, res){
         coords = res.body.results[0].geometry.location
         this.setState({ coded: [coords.lat, coords.lng] })
-        console.log(this.state.coded)
       }.bind(this))
   }
 

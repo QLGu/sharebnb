@@ -3,9 +3,7 @@
 import React, { PropTypes } from 'react';
 import withStyles from '../../decorators/withStyles';
 import styles from './SearchForm.css';
-import Location from '../../core/Location';
-import http from '../../core/http';
-
+import Search from '../../utils/Search';
 
 @withStyles(styles)
 class SearchForm extends React.Component {
@@ -36,16 +34,10 @@ class SearchForm extends React.Component {
   }
 
   submitSearch(e) {
-    e.preventDefault();
-    if(this.validate()){
-      let query = "";
-      query += this.state.location;
-      query += "?occupancy=" + this.state.occupancy;
-      query += "&checkIn=" + this.state.checkIn;
-      query += "&checkOut=" + this.state.checkOut;
-      Location.navigateTo('/search/' + query);
+    if (this.validate()){
+      Search.handleSubmit(e, this.state);
     } else {
-      console.dir("INVALID INPUT");
+      console.dir("Invalid search");
     }
   }
 

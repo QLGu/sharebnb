@@ -20,7 +20,7 @@ class ResultListing extends React.Component {
     })
     return (
       <div className="ResultListing">
-        <ResultFilterBox />
+        <ResultFilterBox filters={ this.props.filters } _filterChange={ this.props._filterChange }/>
         {renderedSamples}
       </div>
     );

@@ -9,6 +9,11 @@ class ResultFilterBox extends React.Component {
 
   constructor(props) {
     super(props);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(n, e){
+    this.props._filterChange(n, e)
   }
 
   render() {
@@ -17,9 +22,9 @@ class ResultFilterBox extends React.Component {
         <div className="Dates">
           <span className="title">Dates</span>
           <div className="filters">
-            <input className="normalizedInput" type="date"/>
-            <input className="normalizedInput" type="date"/>
-            <input className="normalizedInput" type="number" min="1" max="8"/>
+            <input className="normalizedInput" type="date" value={ this.props.filters.checkIn } onChange={ this.handleChange.bind(this, 'checkIn') }/>
+            <input className="normalizedInput" type="date" value={ this.props.filters.checkOut } onChange={ this.handleChange.bind(this, 'checkOut') }/>
+            <input className="normalizedInput" type="number" min="1" max="8" value={ this.props.filters.occupancy } onChange={ this.handleChange.bind(this, 'occupancy') }/>
           </div>
         </div>
 
