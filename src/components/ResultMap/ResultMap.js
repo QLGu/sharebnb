@@ -5,6 +5,7 @@ import withStyles from '../../decorators/withStyles';
 import styles from './ResultMap.css';
 import GoogleMap from 'google-map-react';
 import request from 'superagent';
+import TextBox from '../TextBox';
 
 @withStyles(styles)
 class ResultMap extends React.Component {
@@ -26,7 +27,7 @@ class ResultMap extends React.Component {
   }
 
   render() {
-    let gmaps = this.state.coded && <GoogleMap center={this.state.coded} zoom={11} />
+    let gmaps = this.state.coded && <GoogleMap center={this.state.coded} zoom={11} ><TextBox lat={37.38747} lng={-122.05754} text={'A'} /></GoogleMap>
 
     return (
       <div className="ResultMap">

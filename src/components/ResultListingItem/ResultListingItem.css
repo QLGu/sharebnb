@@ -3,7 +3,6 @@
 @import '../variables.css';
 
 .ResultListingItem {
-  background: white;
   line-height: 1;
   width: 50%;
   padding: 10px;

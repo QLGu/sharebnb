@@ -36,6 +36,7 @@ class ResultPage extends React.Component {
   render() {
     let title = 'Results';
     this.context.onSetTitle(title);
+    
     return (
       <div className="ResultPage">
         <ResultListing />
