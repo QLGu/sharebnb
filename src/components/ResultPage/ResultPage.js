@@ -68,6 +68,7 @@ class ResultPage extends React.Component {
         Private Room: {this.state.privateRoom ? "true" : "false"}
         <br/>
         Shared Room: {this.state.sharedRoom ? "true" : "false"}
+        <br/>
 
         <ResultListing filters={ this.state } _filterChange={ this.handleFilterChange }/>
         <ResultMap location={ this.state.location }/>
