@@ -22,7 +22,13 @@ class ResultPage extends React.Component {
 
   handleFilterChange(n, e) {
     let newState = {};
-    newState[n] = e.target.value;
+
+    if(e.target.value === "on"){
+      newState[n] = !this.state[n];
+    } else {
+      newState[n] = e.target.value;
+    }
+
     this.setState(newState);
   }
 
@@ -36,6 +42,9 @@ class ResultPage extends React.Component {
       }
     }
     newState['location'] = split[0];
+    newState['entirePlace'] = true;
+    newState['privateRoom'] = true;
+    newState['sharedRoom'] = true;
 
     return newState
   }
@@ -54,6 +63,12 @@ class ResultPage extends React.Component {
         <br/>
         Occupancy: {this.state.occupancy}
         <br/>
+        Entire Place: {this.state.entirePlace ? "true" : "false"}
+        <br/>
+        Private Room: {this.state.privateRoom ? "true" : "false"}
+        <br/>
+        Shared Room: {this.state.sharedRoom ? "true" : "false"}
+
         <ResultListing filters={ this.state } _filterChange={ this.handleFilterChange }/>
         <ResultMap location={ this.state.location }/>
       </div>
