@@ -6,6 +6,7 @@ import Widgets from 'views/Widgets';
 import About from 'views/About';
 import Login from 'views/Login';
 import RequireLogin from 'views/RequireLogin';
+import Result from 'views/Result';
 import LoginSuccess from 'views/LoginSuccess';
 import Survey from 'views/Survey';
 import NotFound from 'views/NotFound';
@@ -15,6 +16,9 @@ export default function(store) {
     <Route component={App}>
       <Route path="/" component={Home}/>
       <Route path="/widgets" component={Widgets}/>
+      <Route path="/results" component={Result}>
+
+      </Route>
       <Route path="/about" component={About}/>
       <Route path="/login" component={Login}/>
       <Route component={RequireLogin} onEnter={RequireLogin.onEnter(store)}>

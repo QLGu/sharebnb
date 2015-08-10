@@ -4,7 +4,9 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {isLoaded as isInfoLoaded} from '../reducers/info';
 import {isLoaded as isAuthLoaded} from '../reducers/auth';
+import {isLoaded as isSearchLoaded} from '../reducers/search';
 import {load as loadInfo} from '../actions/infoActions';
+import {searchListings as searchListings} from '../actions/searchActions';
 import * as authActions from '../actions/authActions';
 import {load as loadAuth} from '../actions/authActions';
 import InfoBar from '../components/InfoBar';
@@ -98,6 +100,9 @@ class AppContainer extends Component {
     const promises = [];
     if (!isInfoLoaded(store.getState())) {
       promises.push(store.dispatch(loadInfo()));
+    }
+    if (!isSearchLoaded(store.getState())) {
+      promises.push(store.dispatch(searchListings()));
     }
     if (!isAuthLoaded(store.getState())) {
       promises.push(store.dispatch(loadAuth()));

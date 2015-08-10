@@ -1,53 +1,50 @@
-/*! React Starter Kit | MIT License | http://www.reactstarterkit.com/ */
-
-import React, { PropTypes } from 'react';
-
+import React, { Component, PropTypes } from 'react';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import router from 'react-router';
+import * as searchActions from '../actions/searchActions';
 import {requireServerCss, requireServerImage} from '../util';
 
 const styles = __CLIENT__ ? require('./SearchForm.scss') : requireServerCss(require.resolve('./SearchForm.scss'));
 
-class SearchForm extends React.Component {
-
-  constructor() {
-    super();
-    this.state = {
-      location: "",
-      checkIn: "",
-      checkOut: "",
-      occupancy: 1
-    }
-    this.submitSearch = this.submitSearch.bind(this);
+class SearchForm extends Component {
+  static propTypes = {
+    search: PropTypes.object,
+    searchListings: PropTypes.func.isRequired
   }
 
-  static propTypes = {
-    maxLines: PropTypes.number
-  };
-
-  static defaultProps = {
-    maxLines: 1
-  };
+  constructor(props, context){
+    super(props, context);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.state = {
+      location: '',
+      checkIn: '',
+      checkOut: '',
+      occupancy: 1
+    }
+  }
 
   handleChange(n, e) {
     let newState = {};
     newState[n] = e.target.value;
-    this.setState(newState)
+    this.setState(newState);
   }
 
-  submitSearch(e) {
-    if (this.validate()){
-
-    } else {
-      console.dir("Invalid search");
-    }
+  handleSubmit(e){
+    const {searchListings} = this.props;
+    searchListings(this.state);
+    e.preventDefault();
+    this.context.router.transitionTo('/results');
   }
 
   validate(){
-    return (this.state.location && this.state.checkIn && this.state.checkOut && this.state.occupancy)
+    return (search.location && search.checkIn && search.checkOut && search.occupancy)
   }
 
   render() {
+    const {search, searchListings} = this.props;
     return (
-      <form className={styles.SearchForm} onSubmit={ this.submitSearch }>
+      <form className={styles.SearchForm} onSubmit={ this.handleSubmit }>
         <input type="text"
                className={styles.locationInput}
                ref="location" 
@@ -73,7 +70,24 @@ class SearchForm extends React.Component {
       </form>
     );
   }
-
 }
+SearchForm.contextTypes = {
+  router: React.PropTypes.object.isRequired
+};
 
-export default SearchForm;
+@connect(state => ({
+  search: state.search.data,
+}))
+
+export default 
+class SearchFormContainer {
+  static propTypes = {
+    search: PropTypes.object,
+    dispatch: PropTypes.func.isRequired
+  }
+
+  render() {
+    const { search, dispatch } = this.props;
+    return <SearchForm search={search} {...bindActionCreators(searchActions, dispatch)} />;
+  }
+}

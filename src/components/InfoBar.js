@@ -2,6 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as infoActions from '../actions/infoActions';
+import * as searchActions from '../actions/searchActions';
 import {requireServerCss} from '../util';
 
 const styles = __CLIENT__ ? require('./InfoBar.scss') : requireServerCss(require.resolve('./InfoBar.scss'));
@@ -9,11 +10,12 @@ const styles = __CLIENT__ ? require('./InfoBar.scss') : requireServerCss(require
 class InfoBar extends Component {
   static propTypes = {
     info: PropTypes.object,
-    load: PropTypes.func.isRequired
+    search: PropTypes.object,
+    load: PropTypes.func.isRequired,
   }
 
   render() {
-    const {info, load} = this.props;
+    const {info, load, search, searchListings} = this.props;
     return (
       <div className={styles.infoBar + ' well'}>
         <div className="container">
@@ -21,7 +23,9 @@ class InfoBar extends Component {
           {' '}
           <strong>{info ? info.message : 'no info!'}</strong>
           <span className={styles.time}>{info && new Date(info.time).toString()}</span>
+          <span className={styles.time}>{search && new Date(search.time).toString()}</span>
           <button className="btn btn-primary" onClick={load}>Reload from server</button>
+          <button className="btn btn-primary" onClick={searchListings.bind(this, 'hello')}>Reload from server2</button>
         </div>
       </div>
     );
@@ -29,7 +33,8 @@ class InfoBar extends Component {
 }
 
 @connect(state => ({
-  info: state.info.data
+  info: state.info.data,
+  search: state.search.data,
 }))
 export default
 class InfoBarContainer {
@@ -40,6 +45,6 @@ class InfoBarContainer {
 
   render() {
     const { info, dispatch } = this.props;
-    return <InfoBar info={info} {...bindActionCreators(infoActions, dispatch)}/>;
+    return <InfoBar info={info} {...bindActionCreators(searchActions, dispatch)}{...bindActionCreators(infoActions, dispatch)}/>;
   }
 }
