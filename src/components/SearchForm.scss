@@ -1,0 +1,43 @@
+.SearchForm {
+  position: absolute;
+  bottom: 0;
+  color: black;
+  height: 15vh;
+  background: rgba(0,0,0,0.6);
+  width: 100%;
+  text-align: center;
+  input {
+    height: 35px;
+    margin-top: 5vh;
+    border: none;
+    border-left: 1px solid #C1C1C1;
+    padding-left: 10px;
+    &.locationInput{
+      width: 30%;
+    }
+  }
+
+  button {
+    height: 36px;
+    margin-right: 8px;
+    color: #fff;
+    background: #1396A0;
+    border: none;
+  }
+}
+
+.submitSearchButton:hover{
+  background: #10666D;
+}
+
+.input--location {
+  width: 35%;
+}
+
+.input--date{
+  width: 15%;
+}
+
+.input--occupancy{
+  width: 10%;
+}

@@ -1,0 +1,21 @@
+
+.AboutContainer {
+  color: white;
+  width: 100%;
+  position: fixed;
+  margin: 0 auto;
+  height: 600px;
+  background-color: #6CD4D6;
+  top: -600px;
+  transition: top .5s ease;
+  z-index: 1000000;
+}
+
+.showAbout {
+  top: 0px;
+  padding: 10px;
+}
+
+.closeAboutButton {
+  cursor: pointer;
+}

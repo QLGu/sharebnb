@@ -1,0 +1,53 @@
+body {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+}
+.app {
+  :global(.navbar-brand) {
+    position:relative;
+    padding-left: 50px;
+  }
+  .brand {
+    position:absolute;
+    $size: 40px;
+    top:5px;
+    left:5px;
+    display:inline-block;
+    background: #2d2d2d url('./logo.png') no-repeat center center;
+    width: $size;
+    height: $size;
+    background-size: 80%;
+    margin: 0 10px 0 0;
+    border-radius: $size / 2;
+  }
+  nav :global(.fa) {
+    font-size: 2em;
+    line-height: 20px;
+  }
+
+  nav :global {
+    background: rgba(0,0,0,0);
+    border: none;
+  }
+
+  nav :global(a) {
+    color: white !important;
+  }
+
+  nav :global(a):hover {
+    color: rgba(255,255,255,0.7) !important;
+  }
+
+  nav :global(.listing-link) {
+    background: #1396A0;
+    margin-top: 8px;
+    margin-left: 10px;
+    padding: 8px 10px 8px 10px;
+  }
+
+  nav :global(.listing-link):hover {
+    background: #146A71 !important;
+  }
+}
+.appContent {
+  margin: 50px 0; // for fixed navbar
+}
