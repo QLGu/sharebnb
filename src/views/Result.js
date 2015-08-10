@@ -1,9 +1,14 @@
-/*! React Starter Kit | MIT License | http://www.reactstarterkit.com/ */
-
 import React, { PropTypes } from 'react';
+import {requireServerCss} from '../util';
 
-// import ResultMap from '../ResultMap';
-// import ResultListing from '../ResultListing';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import * as searchActions from '../actions/searchActions';
+
+const styles = __CLIENT__ ? require('./Result.scss') : requireServerCss(require.resolve('./Result.scss'));
+
+import ResultMap from '../components/Map';
+import ResultListing from '../components/ResultListing';
 
 class Result extends React.Component {
 
@@ -26,14 +31,34 @@ class Result extends React.Component {
 
   render() {
     let title = 'Results';
-    
+    let {search} = this.props;
+    console.log(search.query)
     return (
-      <div className="Result">
-
+      <div className={styles.resultContainer}>
+        <div className="row">
+          <ResultListing query={search.query} _queryChange={this.handleFilterChange}/>
+          <ResultMap location={search.query.location}/>
+        </div>
       </div>
     );
   }
 
 }
 
-export default Result;
+
+@connect(state => ({
+  search: state.search.data,
+}))
+
+export default 
+class ResultContainer {
+  static propTypes = {
+    search: PropTypes.object,
+    dispatch: PropTypes.func.isRequired
+  }
+
+  render() {
+    const { search, dispatch } = this.props;
+    return <Result search={search} {...bindActionCreators(searchActions, dispatch)} />;
+  }
+}
