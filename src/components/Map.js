@@ -15,28 +15,38 @@ class Map extends React.Component {
     this.state = {coded: null}
   }
 
-  codeLocation(){
+  codeLocation(location){
     console.log("sending request to google map api...");
     let coords = null;
-    let {search} = this.props;
     request
-      .get('https://maps.googleapis.com/maps/api/geocode/json?address=' + search.query.location + '&key=AIzaSyBw4dvodHmXRVuKHZsM3lknJV_V-DDa6jo')
+      .get('https://maps.googleapis.com/maps/api/geocode/json?address=' + location + '&key=AIzaSyBw4dvodHmXRVuKHZsM3lknJV_V-DDa6jo')
       .end(function(err, res){
         coords = res.body.results[0].geometry.location
         this.setState({ coded: [coords.lat, coords.lng] })
       }.bind(this))
   }
 
-  componentDidMount() {
-    ::this.codeLocation();
+  componentWillMount() {
+    console.log("component will mount");
+    let location = this.props.location || "San Francisco"
+    ::this.codeLocation(location);
   }
 
   componentWillReceiveProps(nextProps){
-    ::this.codeLocation();
+    if(nextProps.location !== this.props.location){
+      console.log("props changed, sending to gmap api");
+      ::this.codeLocation(nextProps.location);
+    }
+  }
+
+  shouldComponentUpdate(nextProps, nextState){
+    let shouldUpdate = this.state !== nextState;
+    return shouldUpdate;
   }
 
   render() {
-    let markers = this.props.search.listings.map(function(listing){
+    console.log("rendering map...");
+    let markers = this.props.listings.map(function(listing){
       return <Marker lat={listing.lat} lng={listing.lng} key={listing.id} listing={listing}/>
     })
     return (
@@ -51,13 +61,14 @@ class Map extends React.Component {
 }
 
 @connect(state=> ({
-  search: state.search.data,
+  listings: state.search.data.listings,
+  location: state.search.data.query.location
 }))
 
 export default
 class MapContainer {
   render() {
-    const { search } = this.props;
-    return <Map search={search} />
+    const { listings, location } = this.props;
+    return <Map listings={listings} location={location}/>
   }
 }
