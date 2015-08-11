@@ -33,12 +33,13 @@ class Result extends React.Component {
   render() {
     let title = 'Results';
     let {search} = this.props;
+
     return (
       <div className={styles.resultContainer}>
         <div className={styles.navBg}/>
         <div className={styles.fixed + " row"}>
-          <ResultListing query={search.data.query} _filterChange={this.handleFilterChange}/>
-          <ResultMap location={search.data.query.location}/>
+          <ResultListing listings={search.data.listings} query={search.data.query} _filterChange={this.handleFilterChange}/>
+          <ResultMap listings={search.data.listings} location={search.data.query.location}/>
         </div>
       </div>
     );

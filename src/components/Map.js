@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import GoogleMap from 'google-map-react';
+import Marker from './Marker';
 import request from 'superagent';
 
 import {connect} from 'react-redux';
@@ -19,7 +20,7 @@ class Map extends React.Component {
     let coords = null;
     let {search} = this.props;
     request
-      .get('https://maps.googleapis.com/maps/api/geocode/json?address=' + search + '&key=AIzaSyBw4dvodHmXRVuKHZsM3lknJV_V-DDa6jo')
+      .get('https://maps.googleapis.com/maps/api/geocode/json?address=' + search.query.location + '&key=AIzaSyBw4dvodHmXRVuKHZsM3lknJV_V-DDa6jo')
       .end(function(err, res){
         coords = res.body.results[0].geometry.location
         this.setState({ coded: [coords.lat, coords.lng] })
@@ -35,11 +36,14 @@ class Map extends React.Component {
   }
 
   render() {
-    console.log(this.props.search);
-    let gmaps = <GoogleMap center={this.state.coded} zoom={11} ></GoogleMap>
+    let markers = this.props.search.listings.map(function(listing){
+      return <Marker lat={listing.lat} lng={listing.lng} key={listing.id} listing={listing}/>
+    })
     return (
       <div className={styles.map + " col-sm-5"}>
-        {gmaps}
+        <GoogleMap center={this.state.coded} zoom={15} >
+          {markers}
+        </GoogleMap>
       </div>
     );
   }
@@ -47,7 +51,7 @@ class Map extends React.Component {
 }
 
 @connect(state=> ({
-  search: state.search.data.query.location
+  search: state.search.data,
 }))
 
 export default

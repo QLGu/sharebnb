@@ -14,8 +14,10 @@ class ResultListingItem extends React.Component {
       <div className="col-sm-6">
         <img className={styles.listingImg} src="https://a1.muscache.com/ac/pictures/98685770/4fcfcac1_original.jpg?interpolation=lanczos-none&size=x_medium&output-format=jpg&output-quality=70"/>
         <div className="caption text-center"> 
-          <h5>This is a sample listing </h5>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+          <h5>{this.props.listing.title}</h5>
+          {this.props.listing.address}
+          <br/>
+          ${this.props.listing.price} / night
         </div>
       </div>
     );
