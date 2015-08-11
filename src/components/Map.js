@@ -15,6 +15,7 @@ class Map extends React.Component {
   }
 
   codeLocation(){
+    console.log("sending request to google map api...");
     let coords = null;
     let {search} = this.props;
     request
@@ -34,6 +35,7 @@ class Map extends React.Component {
   }
 
   render() {
+    console.log(this.props.search.location);
     let gmaps = <GoogleMap center={this.state.coded} zoom={11} ></GoogleMap>
     return (
       <div className={styles.map + " col-sm-5"}>

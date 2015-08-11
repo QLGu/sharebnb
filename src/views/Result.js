@@ -35,6 +35,7 @@ class Result extends React.Component {
     let {search} = this.props;
     return (
       <div className={styles.resultContainer}>
+        <div className={styles.navBg}/>
         <div className={styles.fixed + " row"}>
           <ResultListing query={search.data.query} _filterChange={this.handleFilterChange}/>
           <ResultMap location={search.data.query.location}/>
