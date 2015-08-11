@@ -1,8 +1,10 @@
-/*! React Starter Kit | MIT License | http://www.reactstarterkit.com/ */
-
 import React, { PropTypes } from 'react';
 import ResultFilterBox from './ResultFilterBox';
 import ResultListingItem from './ResultListingItem';
+import {requireServerCss} from '../util';
+
+const styles = __CLIENT__ ? require('./ResultListing.scss') : requireServerCss(require.resolve('./ResultListing.scss'));
+
 
 class ResultListing extends React.Component {
 
@@ -16,8 +18,8 @@ class ResultListing extends React.Component {
       return <ResultListingItem />
     })
     return (
-      <div className="col-sm-7">
-        <ResultFilterBox filters={ this.props.query } _filterChange={ this.props._queryChange }/>
+      <div className={styles.resultListing + " col-sm-7"}>
+        <ResultFilterBox query={ this.props.query } _filterChange={ this.props._filterChange }/>
         {renderedSamples}
       </div>
     );

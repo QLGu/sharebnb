@@ -5,7 +5,8 @@ import {
 } from '../actions/actionTypes';
 
 const initialState = {
-  loaded: false
+  loaded: false,
+  data: null
 };
 
 export default function search(state = initialState, action = {}) {

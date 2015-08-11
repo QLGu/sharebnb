@@ -14,40 +14,39 @@ class Result extends React.Component {
 
   constructor(props) {
     super(props);
-    this.handleFilterChange = this.handleFilterChange.bind(this)
+    this.handleFilterChange = this.handleFilterChange.bind(this);
   }
 
   handleFilterChange(n, e) {
-    let newState = {};
-
-    if(e.target.value === "on"){
-      newState[n] = !this.state[n];
+    let newState = this.props.search.data.query;
+    if(n === "location"){
+      newState[n] = e.target.value;
+    } else if(e.target.value === "on"){
+      newState[n] = 
+        this.props.search.data.query[n] === "true" ? "false" : "true";
     } else {
       newState[n] = e.target.value;
     }
-
-    this.setState(newState);
+    this.props.searchListings(newState);
   }
 
   render() {
     let title = 'Results';
     let {search} = this.props;
-    console.log(search.query)
     return (
       <div className={styles.resultContainer}>
-        <div className="row">
-          <ResultListing query={search.query} _queryChange={this.handleFilterChange}/>
-          <ResultMap location={search.query.location}/>
+        <div className={styles.fixed + " row"}>
+          <ResultListing query={search.data.query} _filterChange={this.handleFilterChange}/>
+          <ResultMap location={search.data.query.location}/>
         </div>
       </div>
     );
   }
-
 }
 
 
 @connect(state => ({
-  search: state.search.data,
+  search: state.search,
 }))
 
 export default 

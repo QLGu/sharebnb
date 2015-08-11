@@ -1,4 +1,8 @@
-resultContainer {
-  width: 100vh;
-  height: 100vh;
+.resultContainer {
+  width: 100%;
+  overflow: hidden;
+}
+
+.fixed {
+  position: fixed;
 }
