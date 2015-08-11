@@ -19,7 +19,7 @@ class Map extends React.Component {
     let coords = null;
     let {search} = this.props;
     request
-      .get('https://maps.googleapis.com/maps/api/geocode/json?address=' + search.location + '&key=AIzaSyBw4dvodHmXRVuKHZsM3lknJV_V-DDa6jo')
+      .get('https://maps.googleapis.com/maps/api/geocode/json?address=' + search + '&key=AIzaSyBw4dvodHmXRVuKHZsM3lknJV_V-DDa6jo')
       .end(function(err, res){
         coords = res.body.results[0].geometry.location
         this.setState({ coded: [coords.lat, coords.lng] })
@@ -35,7 +35,7 @@ class Map extends React.Component {
   }
 
   render() {
-    console.log(this.props.search.location);
+    console.log(this.props.search);
     let gmaps = <GoogleMap center={this.state.coded} zoom={11} ></GoogleMap>
     return (
       <div className={styles.map + " col-sm-5"}>
@@ -47,7 +47,7 @@ class Map extends React.Component {
 }
 
 @connect(state=> ({
-  search: state.search.data.query
+  search: state.search.data.query.location
 }))
 
 export default

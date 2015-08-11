@@ -16,6 +16,7 @@ const initial = {
 }
 
 export function searchListings(query = initial) {
+  console.log("sending request to local api...");
   return {
     types: [SEARCH_LOAD, SEARCH_LOAD_SUCCESS, SEARCH_LOAD_FAIL],
     promise: (client) => client.get('/search', {
