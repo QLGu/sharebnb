@@ -26,34 +26,34 @@ class Map extends React.Component {
       }.bind(this))
   }
 
-  componentWillMount() {
-    console.log("component will mount");
-    let location = this.props.location || "San Francisco"
-    ::this.codeLocation(location);
+  componentWillMount(){
+    console.log("coding location because of mounting");
+    ::this.codeLocation(this.props.location);
   }
 
   componentWillReceiveProps(nextProps){
     if(nextProps.location !== this.props.location){
-      console.log("props changed, sending to gmap api");
+      console.log("coding location because of prop change");
       ::this.codeLocation(nextProps.location);
     }
   }
 
-  shouldComponentUpdate(nextProps, nextState){
-    let shouldUpdate = this.state !== nextState;
-    return shouldUpdate;
-  }
-
   render() {
-    console.log("rendering map...");
     let markers = this.props.listings.map(function(listing){
       return <Marker lat={listing.lat} lng={listing.lng} key={listing.id} listing={listing}/>
     })
-    return (
-      <div className={styles.map + " col-sm-5"}>
+    let googlemap;
+
+    if(this.state.coded){
+      googlemap = (
         <GoogleMap center={this.state.coded} zoom={15} >
           {markers}
         </GoogleMap>
+      );
+    }
+    return (
+      <div className={styles.map + " col-sm-5"}>
+        {googlemap}
       </div>
     );
   }

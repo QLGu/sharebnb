@@ -3,7 +3,6 @@ import {Link} from 'react-router';
 import About from '../components/About';
 import Search from '../components/Search';
 import CounterButton from '../components/CounterButton';
-import GithubButton from '../components/GithubButton';
 import {requireServerCss, requireServerImage} from '../util';
 
 const styles = __CLIENT__ ? require('./Home.scss') : requireServerCss(require.resolve('./Home.scss'));

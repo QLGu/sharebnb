@@ -70,7 +70,7 @@ app.use((req, res) => {
 });
 
 if (config.port) {
-  app.listen(config.port, (err) => {
+  app.listen(process.env.PORT, (err) => {
     if (err) {
       console.error(err);
     } else {
