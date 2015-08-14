@@ -24,7 +24,7 @@
   ],
   "main": "babel.server.js",
   "scripts": {
-    "start": "node ./node_modules/better-npm-run start",
+    "start": "npm run build && npm run start",
     "build": "webpack --verbose --colors --display-error-details --config webpack/prod.config.js",
     "lint": "eslint -c .eslintrc src",
     "start-dev": "node ./node_modules/better-npm-run start-dev",
